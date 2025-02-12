@@ -1,16 +1,52 @@
-# flutter_qa_test
+# Flutter QA Test Requirements
 
-A new Flutter project.
+## Form Screen Requirements
 
-## Getting Started
+### Text Input Fields
+1. Name Field (Required)
+   - Must not be empty
+   - Length validation:
+     - Must be more than 3 characters
+     - Must be less than 20 characters
+   - Special characters are automatically removed during input
+   - Field should show appropriate error messages when validation fails
 
-This project is a starting point for a Flutter application.
+2. Optional Phone Number Field
+   - Toggle visibility using a switch control
+   - Special characters are automatically removed during input
+   - When visible:
+     - Must not be empty
+     - Must contain only numbers
+     - Should show appropriate error messages when validation fails
 
-A few resources to get you started if this is your first Flutter project:
+### Form Submission
+1. Submit Button Behavior
+   - Clicking submit should trigger form validation
+   - Form should only submit if all visible fields pass validation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+2. Success Message
+   - Should display "Form submitted successfully!" when form is submitted with valid data
+   - Success message should be hidden when:
+     - User attempts to submit the form again
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Test Cases to Implement
+1. Name Field Validation
+   - Test empty field submission
+   - Test name length constraints (< 3 chars and > 20 chars)
+   - Test special character removal when text is entered
+   - Verify error messages
+
+2. Phone Number Field
+   - Test toggle visibility
+   - Test validation when visible
+   - Test numeric-only input
+   - Verify error messages
+
+3. Form Submission
+   - Test successful submission with valid data
+   - Verify success message appears
+   - Verify success message is hidden on resubmission failure
+
+4. Edge Cases
+   - Test form submission with only required fields
+   - Test form submission with all fields
