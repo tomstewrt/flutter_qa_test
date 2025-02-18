@@ -4,19 +4,23 @@ import 'package:flutter_qa_test/widgets/message_text.dart';
 import 'package:flutter_qa_test/widgets/text_input.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  final GlobalKey<FormState> formKey;
+
+  const FormScreen({
+    super.key,
+    required this.formKey,
+  });
 
   @override
   State<FormScreen> createState() => _FormScreenState();
 }
 
 class _FormScreenState extends State<FormScreen> {
-  final _formKey = GlobalKey<FormState>();
   bool _showOptionalField = false;
   String? _submissionMessage;
 
   void _submitForm() {
-    if (_formKey.currentState!.validate()) {
+    if (widget.formKey.currentState!.validate()) {
       setState(() {
         _submissionMessage = 'Form submitted successfully!';
       });
@@ -32,7 +36,7 @@ class _FormScreenState extends State<FormScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: _formKey,
+          key: widget.formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [

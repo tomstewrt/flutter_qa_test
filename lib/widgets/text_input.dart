@@ -20,6 +20,7 @@ class _TextInputState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      key: widget.key,
       controller: controller,
       onChanged: (value) {
         final newValue = value.replaceAll(RegExp(r'[^\w\s]'), '');
